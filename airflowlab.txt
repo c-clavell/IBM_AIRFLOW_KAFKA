@@ -1,0 +1,14 @@
+airflow webserver --port 8080
+
+airflow dags list
+
+airflow tasks list example_bash_operator
+
+cp my_first_dag.py $AIRFLOW_HOME/dags
+
+airflow scheduler
+
+airflow dags unpause tutorial
+
+airflow dags pause tutorial
+
