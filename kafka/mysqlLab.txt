@@ -1,3 +1,5 @@
+#UBUNTU BASH mysql commands
+
 
 sudo service mysql restart
 sudo service mysql start
