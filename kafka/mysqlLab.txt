@@ -1,0 +1,51 @@
+
+sudo service mysql restart
+sudo service mysql start
+sudo mysql -u root
+
+CREATE USER 'cc'@'localhost' IDENTIFIED BY 'mysql';
+
+GRANT ALL ON tolldata.livetolldata TO 'cc'@'localhost';
+
+mysql> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> SHOW GRANTS FOR 'cc'@'localhost';
++-----------------------------------------------------------------------+
+| Grants for cc@localhost                                               |
++-----------------------------------------------------------------------+
+| GRANT USAGE ON *.* TO `cc`@`localhost`                                |
+| GRANT ALL PRIVILEGES ON `tolldata`.`livetolldata` TO `cc`@`localhost` |
++-----------------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+
+
+
+
+no GRANT permission ON tolldata.livetolldata TO 'cc'@'localhost';
+
+no CREATE USER 'username'@'host' IDENTIFIED WITH authentication_plugin BY 'password';
+no CREATE USER 'cc'@'localhost' IDENTIFIED WITH authentication_plugin BY 'mysql';
+
+
+
+mysql> USE mysql;
+
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> SELECT User, Host, plugin FROM mysql.user;
++------------------+-----------+-----------------------+
+| User             | Host      | plugin                |
++------------------+-----------+-----------------------+
+| debian-sys-maint | localhost | caching_sha2_password |
+| mysql.infoschema | localhost | caching_sha2_password |
+| mysql.session    | localhost | caching_sha2_password |
+| mysql.sys        | localhost | caching_sha2_password |
+| root             | localhost | auth_socket           |
++------------------+-----------+-----------------------+
+5 rows in set (0.00 sec)
+
+show databases;
